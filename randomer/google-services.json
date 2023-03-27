@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "481340222527",
+    "firebase_url": "https://blogit-3b465-default-rtdb.firebaseio.com",
+    "project_id": "blogit-3b465",
+    "storage_bucket": "blogit-3b465.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481340222527:android:9212c5a4a88235fb715c8a",
+        "android_client_info": {
+          "package_name": "org.cedzlabs.blogit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481340222527-44rtndbiqd9lj8anamdffvcoiap6silt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.cedzlabs.blogit",
+            "certificate_hash": "89d54ca906425a450eb1288f9eb10edafec369f0"
+          }
+        },
+        {
+          "client_id": "481340222527-p9fdsnc5dskc9ii7u3auqotin23rpv24.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL3xfPomUe4NeHt_GFVZaAglbBO5Y-rgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481340222527-p9fdsnc5dskc9ii7u3auqotin23rpv24.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,9 +4,9 @@
     <color name="navGrey">#FAFAFA</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorDisabled">#808080</color>
-    <color name="colorAccent">#1976D2</color>
-    <color name="colorPrimaryTint">#2196F3</color>
-    <color name="colorDarkPrimaryTint">#1976D2</color>
+    <color name="colorAccent">#FFC107</color>
+    <color name="colorPrimaryTint">#F39F21</color>
+    <color name="colorDarkPrimaryTint">#545B63</color>
     <color name="transparent">#00000000</color>
     <color name="voteOrange">#FF4300</color>
     <color name="voteGrey">#FF9E9E9E</color>

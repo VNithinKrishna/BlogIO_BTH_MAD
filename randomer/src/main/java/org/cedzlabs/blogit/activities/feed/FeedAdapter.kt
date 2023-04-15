@@ -18,7 +18,7 @@ import org.cedzlabs.blogit.R.*
 import org.cedzlabs.blogit.activities.posts.ImagePostActivity
 import org.cedzlabs.blogit.activities.posts.LinkPostActivity
 import org.cedzlabs.blogit.activities.posts.TextPostActivity
-import org.cedzlabs.blogit.activities.users.RedukeSharedPreferences
+import org.cedzlabs.blogit.activities.users.BlogIOSharedPreferences
 import org.cedzlabs.blogit.helpers.readImageFromPath
 import org.cedzlabs.blogit.models.posts.PostModel
 
@@ -80,7 +80,7 @@ class RedukeAdapter(private var posts: List<PostModel>,
             itemView.cardDownvotePost.setOnClickListener { listener.onPostDownvote(post) }
 
             // Color the upvote and downvote buttons based on the current user - if he/she has up-voted or down-voted the current post.
-            val userEmail = RedukeSharedPreferences(itemView.cardUpvotePost.context).getCurrentUserEmail()
+            val userEmail = BlogIOSharedPreferences(itemView.cardUpvotePost.context).getCurrentUserEmail()
             if (userEmail in post.upvotedBy) {
                 itemView.cardUpvotePost.setImageResource(drawable.upvoteactive)
             } else {

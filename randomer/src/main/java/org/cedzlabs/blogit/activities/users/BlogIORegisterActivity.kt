@@ -12,7 +12,7 @@ import org.cedzlabs.blogit.main.MainApp
 import org.cedzlabs.blogit.tools.EspressoIdlingResource
 
 
-class RedukeRegisterActivity : AppCompatActivity(), AnkoLogger {
+class BlogIORegisterActivity : AppCompatActivity(), AnkoLogger {
 
     lateinit var app: MainApp
     // Create instance of FirebaseAuth
@@ -43,7 +43,7 @@ class RedukeRegisterActivity : AppCompatActivity(), AnkoLogger {
                                 showProgress()
                                 // If register is successful.
                                 if (task.isSuccessful) {
-                                    val mypreference = RedukeSharedPreferences(this)
+                                    val mypreference = BlogIOSharedPreferences(this)
                                     mypreference.setCurrentUserName(enteredRegisterUsername.text.toString())
                                     // Sign in success, update UI with the signed-in user's information
                                     toast(org.cedzlabs.blogit.R.string.hint_SucessfullRegister)

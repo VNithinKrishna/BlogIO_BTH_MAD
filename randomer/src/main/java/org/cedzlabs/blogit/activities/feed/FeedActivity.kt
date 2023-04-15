@@ -27,7 +27,7 @@ import org.cedzlabs.blogit.activities.navbar.CustomExpandableListAdapter
 import org.cedzlabs.blogit.activities.posts.ImagePostActivity
 import org.cedzlabs.blogit.activities.posts.LinkPostActivity
 import org.cedzlabs.blogit.activities.posts.TextPostActivity
-import org.cedzlabs.blogit.activities.users.RedukeSharedPreferences
+import org.cedzlabs.blogit.activities.users.BlogIOSharedPreferences
 import org.cedzlabs.blogit.main.MainApp
 import org.cedzlabs.blogit.models.posts.PostModel
 import java.time.LocalDateTime
@@ -146,31 +146,6 @@ class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
             menuItem.isChecked = true
             val postTypes = listOf("Text Post", "Image Post", "Link Post")
             when (menuItem.itemId) {
-                org.cedzlabs.blogit.R.id.nav_addReduke ->
-                    selector(
-                            "What Type Of Post Do You Want To Create?",
-                            postTypes
-                    ) { _, i ->
-
-                        val sel = postTypes[i]
-
-                        when (sel) {
-                            "Text Post" -> {
-                                startActivityForResult<TextPostActivity>(0)
-                            }
-                            "Image Post" -> {
-                                startActivityForResult<ImagePostActivity>(0)
-                            }
-                            "Link Post" -> {
-                                startActivityForResult<LinkPostActivity>(0)
-                            }
-                            else -> error { "Invalid Post Type!" }
-                        }
-
-                    }
-
-            }
-            when (menuItem.itemId) {
                 org.cedzlabs.blogit.R.id.nav_Logout ->
                     alert(org.cedzlabs.blogit.R.string.logoutPrompt) {
                         yesButton {
@@ -238,7 +213,7 @@ class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
             }
         }
 
-        val mypreference = RedukeSharedPreferences(this)
+        val mypreference = BlogIOSharedPreferences(this)
 
         val userEmail = mypreference.getCurrentUserEmail()
 
@@ -409,8 +384,8 @@ class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
 
     // Handle the upvote button being pressed by a user.
     override fun onPostUpvote(post: PostModel) {
-        // Get the current user email from RedukeSharedPreferences
-        val mypreference = RedukeSharedPreferences(this)
+        // Get the current user email from BlogIOSharedPreferences
+        val mypreference = BlogIOSharedPreferences(this)
         val userEmail = mypreference.getCurrentUserEmail()
 
         // Check if the user who just pressed the upvote button has pressed the downvote
@@ -434,7 +409,7 @@ class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
 
     override fun onPostDownvote(post: PostModel) {
 
-        val userEmail = RedukeSharedPreferences(this).getCurrentUserEmail()
+        val userEmail = BlogIOSharedPreferences(this).getCurrentUserEmail()
 
         // Check if the user who just pressed the downvote button has pressed the upvote
         // button for this post. If they have remove their name from the upvotedBy field
@@ -510,11 +485,11 @@ class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
     // Sorts alphabetically (descending)
     fun filterByPostCreator(list: List<PostModel>): List<PostModel> {
         toolbarMain.title = "Your Posts"
-        val mypreference = RedukeSharedPreferences(this)
+        val mypreference = BlogIOSharedPreferences(this)
         return list.filter { post -> post.owner == mypreference.getCurrentUserName() }
     }
 
-    // Initialize the feed by setting the users email and username in the RedukeSharedPreferences
+    // Initialize the feed by setting the users email and username in the BlogIOSharedPreferences
     // and pass the RedukeAdapter to the recyclerView's adapter.
     fun initFeed(imagePosts: List<PostModel>) {
         recyclerView.adapter = RedukeAdapter(imagePosts, this)

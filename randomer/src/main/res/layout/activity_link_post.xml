@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.cedzlabs.blogit.activities.posts.TextPostActivity">
+    tools:context="org.cedzlabs.blogit.activities.posts.LinkPostActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,13 +18,13 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@color/blue_grey_300"
             android:fitsSystemWindows="true"
             app:elevation="0dip"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbarText"
+                android:id="@+id/toolbarLink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:titleTextColor="@color/colorPrimary" />
@@ -55,7 +55,7 @@
                     android:textStyle="bold" />
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/textPostTitleField"
+                    android:id="@+id/linkPostTitleField"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginLeft="8dp"
@@ -69,53 +69,59 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/textPostDescriptionField"
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/linkPostURL"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:layout_marginLeft="10dip"
-                    android:layout_marginTop="10dip"
-                    android:layout_marginRight="10dip"
-                    android:autofillHints=""
-                    android:ems="150"
-                    android:gravity="top"
-                    android:hint="@string/hint_postDescription"
-                    android:inputType="textMultiLine|textCapSentences"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:hint="@string/hint_postURL"
+                    android:inputType="textCapSentences"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:padding="8dp"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/textSubredditTag"
+                    android:id="@+id/linkPostSubredditTag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="8dp"
                     android:padding="8dp"
+                    android:text="@string/subredditTag"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-                <!-- android:text="@string/subredditTag" -->
 
-
+                <Spinner
+                    android:id="@+id/linkPostSubredditSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:layout_marginRight="10dip" />
 <!--                    android:entries="@array/subreddits" />-->
 
                 <Button
-                    android:id="@+id/addTextPostBtn"
+                    android:id="@+id/addLinkPostBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="16dp"
-                    android:background="@color/colorAccent"
+                    android:background="@color/colorDarkPrimaryTint"
                     android:stateListAnimator="@null"
                     android:text="@string/button_addPost"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/deleteTextPostBtn"
+                    android:id="@+id/deleteLinkPostBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"

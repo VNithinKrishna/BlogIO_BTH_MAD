@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.VISIBLE
-import kotlinx.android.synthetic.main.activity_feed.*
-import kotlinx.android.synthetic.main.activity_text_post.*
+import android.widget.Spinner
+import kotlinx.android.synthetic.main.activity_link_post.*
 import org.jetbrains.anko.*
 import org.cedzlabs.blogit.activities.users.BlogIOSharedPreferences
 import org.cedzlabs.blogit.main.MainApp
@@ -16,7 +16,7 @@ import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
 
-class TextPostActivity : AppCompatActivity(), AnkoLogger {
+class LinkPostActivity : AppCompatActivity(), AnkoLogger {
 
     val subreddits = listOf("Android", "Education", "Fashion", "Funny", "Ireland", "Music", "News", "Photography", "Technology", "Video")
 
@@ -24,9 +24,9 @@ class TextPostActivity : AppCompatActivity(), AnkoLogger {
     lateinit var app: MainApp
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(org.cedzlabs.blogit.R.layout.activity_text_post)
-        toolbarText.title = "Add Text Post"
-        setSupportActionBar(toolbarText)
+        setContentView(org.cedzlabs.blogit.R.layout.activity_link_post)
+        toolbarLink.title = "Add Link Post"
+        setSupportActionBar(toolbarLink)
 
         // Show the up the button to allow the user to navigate back to the feed.
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -41,51 +41,53 @@ class TextPostActivity : AppCompatActivity(), AnkoLogger {
             edit = true
 
             // Set toolbar title to Edit Post.
-            toolbarText.title = "Edit Post"
-            setSupportActionBar(toolbarText)
+            toolbarLink.title = "Edit Post"
+            setSupportActionBar(toolbarLink)
             post = intent.extras.getParcelable<PostModel>("post_edit")
 
             // Fill the fields with existing data.
-            textPostTitleField.setText(post.title)
-            textPostDescriptionField.setText(post.text)
-//            textPostSubredditSpinner.setSelection(subreddits.indexOf(post.subreddit))
-//            textPostSubredditSpinner.isEnabled = false
+            linkPostTitleField.setText(post.title)
+            linkPostURL.setText(post.link)
+            linkPostSubredditSpinner.setSelection(subreddits.indexOf(post.subreddit))
+            linkPostSubredditSpinner.isEnabled = false
 
-            deleteTextPostBtn.visibility = VISIBLE
+            deleteLinkPostBtn.visibility = VISIBLE
 
             // Set the button to display save instead of add.
-            addTextPostBtn.setText(org.cedzlabs.blogit.R.string.button_savePost)
+            addLinkPostBtn.setText(org.cedzlabs.blogit.R.string.button_savePost)
         }
 
         // If the user is adding a post.
-        addTextPostBtn.setOnClickListener {
+        addLinkPostBtn.setOnClickListener {
             // Get the data from all the post fields.
-            post.title = textPostTitleField.text.toString()
+            post.title = linkPostTitleField.text.toString()
+            post.type = "Link"
+            post.link = linkPostURL.text.toString()
 
-            post.type = "Text"
+            info { "SAVING LINK AS: " + linkPostURL.text.toString() }
+            info { "ACTUAL LINK AS: " + post.link }
+            post.link
 
-            post.text = textPostDescriptionField.text.toString()
             // Create a timestamp for when the post has been created.
             post.timestamp = DateTimeFormatter
                     .ofPattern("dd-MM-yyyy HH:mm:ss.SSSSSS")
                     .withZone(ZoneOffset.UTC)
                     .format(Instant.now())
             // Get the value from the subreddit spinner.
-            //val subredditSpinner = findViewById<Spinner>(org.cedzlabs.blogit.R.id.textPostSubredditSpinner)
-            //post.subreddit = subredditSpinner.selectedItem.toString()
+            val subredditSpinner = findViewById<Spinner>(org.cedzlabs.blogit.R.id.linkPostSubredditSpinner)
+            post.subreddit = subredditSpinner.selectedItem.toString()
 
             // Get an instance of the BlogIOSharedPreferences.
             val redukeSharedPref = BlogIOSharedPreferences(this)
             post.owner = redukeSharedPref.getCurrentUserName()
 
             // If the fields are empty tell the user they need to fill them.
-            if (post.title.isEmpty() or post.text.isEmpty()) {
+            if (post.title.isEmpty() or post.link.isEmpty()) {
                 toast(org.cedzlabs.blogit.R.string.hint_EnterPostTitle)
             } else {
                 if (edit) {
                     // If the user has edited a post update it.
                     app.posts.update(post.copy())
-                    recyclerView.adapter?.notifyDataSetChanged()
                 } else {
                     // If the user has added a post add it to the posts.
                     app.posts.create(post.copy())
@@ -98,7 +100,7 @@ class TextPostActivity : AppCompatActivity(), AnkoLogger {
         }
 
         // Set up the delete buttons functionality.
-        deleteTextPostBtn.setOnClickListener {
+        deleteLinkPostBtn.setOnClickListener {
             // Make sure the user actually wants to the delete the post with a yes or no popup.
             alert(org.cedzlabs.blogit.R.string.deletePrompt) {
                 yesButton {

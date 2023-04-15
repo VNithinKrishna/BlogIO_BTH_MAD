@@ -5,9 +5,9 @@ import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import org.jetbrains.anko.startActivityForResult
 import org.cedzlabs.blogit.R
-import org.cedzlabs.blogit.activities.users.RedukeLoginActivity
+import org.cedzlabs.blogit.activities.users.BlogIOLoginActivity
 
-class RedukeSplashscreen : AppCompatActivity() {
+class BlogIOSplashscreen : AppCompatActivity() {
     // Create a mDelayHandler for the delay.
     private var mDelayHandler: Handler? = null
 
@@ -17,7 +17,7 @@ class RedukeSplashscreen : AppCompatActivity() {
     // Finish the splashscreen after delay is done.
     internal val mRunnable: Runnable = Runnable {
         if (!isFinishing) {
-            startActivityForResult<RedukeLoginActivity>(0)
+            startActivityForResult<BlogIOLoginActivity>(0)
             finish()
         }
     }

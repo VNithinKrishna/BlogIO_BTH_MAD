@@ -12,10 +12,6 @@
             android:icon="@drawable/person_outline"
             android:title="@string/yourPosts" />
 
-        <item
-            android:id="@+id/nav_addReduke"
-            android:icon="@drawable/add_white"
-            android:title="@string/title_PostAdd" />
 
         <item
             android:id="@+id/nav_Logout"

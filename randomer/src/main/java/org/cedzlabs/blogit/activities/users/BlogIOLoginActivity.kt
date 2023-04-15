@@ -21,7 +21,7 @@ import org.cedzlabs.blogit.models.posts.PostsFirebaseStore
 import org.cedzlabs.blogit.tools.EspressoIdlingResource
 
 
-class RedukeLoginActivity : AppCompatActivity(), AnkoLogger {
+class BlogIOLoginActivity : AppCompatActivity(), AnkoLogger {
 
     // Get instance of the Firebase Auth
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -49,7 +49,7 @@ class RedukeLoginActivity : AppCompatActivity(), AnkoLogger {
 
         super.onCreate(savedInstanceState)
         setContentView(org.cedzlabs.blogit.R.layout.activity_login)
-        val redukeSharedPref = RedukeSharedPreferences(this)
+        val blogioSharedPref = BlogIOSharedPreferences(this)
 
         // Setup the login button functionality.
         firebaseLoginButton.setOnClickListener {
@@ -66,8 +66,8 @@ class RedukeLoginActivity : AppCompatActivity(), AnkoLogger {
                                 if (fireStore != null) {
                                     // Sign in success, update UI with the signed-in user's information
                                     fireStore!!.fetchPosts {
-                                        // If the user logs in, set their email in the redukeSharedPref for use later on.
-                                        redukeSharedPref.setCurrentUserEmail(enteredLoginEmail.text.toString())
+                                        // If the user logs in, set their email in the blogioSharedPref for use later on.
+                                        blogioSharedPref.setCurrentUserEmail(enteredLoginEmail.text.toString())
                                         startActivityForResult(intentFor<FeedActivity>().putExtra("typeOfSignIn", "firebase"), 0)
                                     }
 
@@ -97,9 +97,9 @@ class RedukeLoginActivity : AppCompatActivity(), AnkoLogger {
             }
         }
 
-        // Set the register button to navigate to the RedukeRegisterActivity.
+        // Set the register button to navigate to the BlogIORegisterActivity.
         navToRegisterButton.setOnClickListener {
-            startActivityForResult<RedukeRegisterActivity>(0)
+            startActivityForResult<BlogIORegisterActivity>(0)
         }
 
         // Build a GoogleSignInClient with the options specified by gso.
@@ -134,7 +134,7 @@ class RedukeLoginActivity : AppCompatActivity(), AnkoLogger {
     }
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        val redukeSharedPref = RedukeSharedPreferences(this)
+        val blogioSharedPref = BlogIOSharedPreferences(this)
         try {
             val account = completedTask.getResult(ApiException::class.java)
 
@@ -143,8 +143,8 @@ class RedukeLoginActivity : AppCompatActivity(), AnkoLogger {
                 val personEmail = account.email
 
                 if (personEmail != null && personName != null) {
-                    redukeSharedPref.setCurrentUserEmail(personEmail)
-                    redukeSharedPref.setCurrentUserName((personName.replace("\\s".toRegex(), "").toLowerCase()).capitalize())
+                    blogioSharedPref.setCurrentUserEmail(personEmail)
+                    blogioSharedPref.setCurrentUserName((personName.replace("\\s".toRegex(), "").toLowerCase()).capitalize())
                 }
 
                 if (fireStore != null) {

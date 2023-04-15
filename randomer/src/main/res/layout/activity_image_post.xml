@@ -141,7 +141,6 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="8dp"
                     android:padding="8dp"
-                    android:text="@string/subredditTag"
                     android:textAlignment="viewStart"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -152,8 +151,7 @@
                     android:layout_height="49dp"
                     android:layout_marginLeft="10dip"
                     android:layout_marginTop="10dip"
-                    android:layout_marginRight="10dip"
-                    android:entries="@array/subreddits" />
+                    android:layout_marginRight="10dip"/>
 
                 <Button
                     android:id="@+id/addImagePostBtn"

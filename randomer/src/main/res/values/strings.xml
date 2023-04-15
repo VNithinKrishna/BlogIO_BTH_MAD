@@ -1,8 +1,8 @@
 <resources>
     <!--Global Strings-->
-    <string name="app_name">Blogit</string>
-    <string name="hint_Reduke">Reduke</string>
-    <string name="disc_RedukeLogo">Reduke Logo</string>
+    <string name="app_name">BlogIO</string>
+    <string name="hint_Reduke">BlogIO</string>
+    <string name="disc_RedukeLogo">BlogIO logo</string>
 
     <!--User-->
     <string name="email">Email</string>
@@ -64,13 +64,13 @@
     <string name="examplepoints">342 points</string>
     <string name="zerocomments">0 comments</string>
     <string name="defaulttime">7 hours ago</string>
-    <string name="defaultsubreddit">askreddit</string>
+    <string name="defaultsubreddit">ask to post</string>
     <string name="point">·</string>
     <string name="upvote_button">upvote button</string>
     <string name="favourite_button">favourite button</string>
     <string name="menu_on_card">menu on card</string>
     <string name="downvote_button">downvote button</string>
-    <string name="subredditTag">Subreddit</string>
+    <string name="subredditTag">Categories</string>
     <string name="button_addImageFromGallery">CHOOSE IMAGE</string>
     <string name="button_addImageFromCamera">TAKE PHOTO</string>
     <string name="imageTag">Choose Image</string>
@@ -78,7 +78,7 @@
     <string name="the_post_s_image">The Post\'s Image</string>
     <string name="select_redukeImage">Select Post Image</string>
     <string name="title_ImagePost">Image Post</string>
-    <string name="title_LinkPost">Add Link Pos</string>
+    <string name="title_LinkPost">Add Link Post</string>
     <string name="toast_GoogleAuthFail">Sign In With Google Failed!</string>
     <string name="yourPosts">Your Posts</string>
     <string name="feed">Feed</string>
@@ -93,7 +93,7 @@
         <item>Education</item>
         <item>Fashion</item>
         <item>Funny</item>
-        <item>Ireland</item>
+        <item>Sweden</item>
         <item>Music</item>
         <item>News</item>
         <item>Photography</item>
@@ -101,12 +101,12 @@
         <item>Video</item>
     </string-array>
 
-    <string-array name="subreddits">
+    <string-array name="c">
         <item>Android</item>
         <item>Education</item>
         <item>Fashion</item>
         <item>Funny</item>
-        <item>Zuric</item>
+        <item>Sweden</item>
         <item>Music</item>
         <item>News</item>
         <item>Photography</item>

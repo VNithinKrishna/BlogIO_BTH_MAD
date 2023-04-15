@@ -28,7 +28,7 @@
             android:required="false" />
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="org.cedzlabs.blogit.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -37,13 +37,16 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name="org.cedzlabs.blogit.activities.other.BlogIOSplashscreen">
+        <activity android:name="org.cedzlabs.blogit.activities.other.BlogIOSplashscreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
 
         <activity
             android:name="org.cedzlabs.blogit.activities.feed.FeedActivity"

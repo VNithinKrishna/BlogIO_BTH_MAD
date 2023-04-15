@@ -1,6 +1,6 @@
 package org.cedzlabs.blogit.activities.other;
 
-import android.support.test.rule.ActivityTestRule;
+import androidx.test.rule.ActivityTestRule;
 import android.view.View;
 
 import org.junit.After;

@@ -25,7 +25,7 @@ public class EspressoIdlingResource {
     }
 
     // Function to allow class to access the IdlingResource.
-    public static android.support.test.espresso.IdlingResource getIdlingResource() {
+    public static androidx.test.espresso.IdlingResource getIdlingResource() {
         return mCountingIdlingResource;
     }
 }

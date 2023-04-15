@@ -2,7 +2,7 @@ package org.cedzlabs.blogit.activities.other
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import org.jetbrains.anko.startActivityForResult
 import org.cedzlabs.blogit.R
 import org.cedzlabs.blogit.activities.users.BlogIOLoginActivity

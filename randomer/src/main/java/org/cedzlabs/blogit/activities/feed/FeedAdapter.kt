@@ -3,13 +3,13 @@ package org.cedzlabs.blogit.activities.feed
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.URLUtil
 import android.widget.PopupMenu
+import androidx.recyclerview.widget.RecyclerView
 import io.github.ponnamkarthik.richlinkpreview.ViewListener
 import kotlinx.android.synthetic.main.card.view.*
 import org.jetbrains.anko.AnkoLogger

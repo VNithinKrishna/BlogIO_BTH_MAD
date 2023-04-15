@@ -1,11 +1,11 @@
 package org.cedzlabs.blogit.tools;
 
 import android.annotation.SuppressLint;
-import android.support.test.espresso.IdlingResource;
+import androidx.test.espresso.IdlingResource;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static android.support.v4.util.Preconditions.checkNotNull;
+import static androidx.core.util.Preconditions.checkNotNull;
 
 /**
  * A simple counter implementation of that determines idleness by

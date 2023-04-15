@@ -2,13 +2,7 @@ package org.cedzlabs.blogit.activities.feed
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBar
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+
 import android.view.Menu
 import android.view.MenuItem
 import android.view.animation.AnimationUtils
@@ -16,9 +10,16 @@ import android.widget.ExpandableListAdapter
 import android.widget.ExpandableListView
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_feed.*
 import kotlinx.android.synthetic.main.card.*
@@ -34,6 +35,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.set
+
 
 
 class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
@@ -53,8 +55,8 @@ class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
     internal var titleList: List<String>? = null
 
     var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
+        .requestEmail()
+        .build()
 
 
     // When the activity is first created the following is run.
@@ -111,8 +113,8 @@ class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
 
             val postTypes = listOf("Text Post", "Image Post", "Link Post")
             selector(
-                    "What Type Of Post Do You Want To Create?",
-                    postTypes
+                "What Type Of Post Do You Want To Create?",
+                postTypes
             ) { _, i ->
 
                 val sel = postTypes[i]
@@ -168,50 +170,7 @@ class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
 
         val listData = HashMap<String, List<String>>()
 
-        val subs = ArrayList<String>(Arrays.asList(*resources.getStringArray(org.cedzlabs.blogit.R.array.subreddits_menu)))
 
-        listData["Subreddits"] = subs
-
-        info { "Expand List: " + listData }
-
-        expandableListView = findViewById(org.cedzlabs.blogit.R.id.nav_ExpandableSubredditList)
-
-        info { "expandableListView: " + expandableListView }
-        if (expandableListView != null) {
-
-            titleList = ArrayList(listData.keys)
-            adapter = CustomExpandableListAdapter(this, titleList as ArrayList<String>, listData)
-            expandableListView!!.setAdapter(adapter)
-            expandableListView!!.expandGroup(0)
-
-            expandableListView!!.setOnGroupExpandListener {
-                //                groupPosition -> Toast.makeText(applicationContext, (titleList as ArrayList<String>)[groupPosition] + " List Expanded.", Toast.LENGTH_SHORT).show()
-            }
-
-            expandableListView!!.setOnGroupCollapseListener {
-            }
-
-            expandableListView!!.setOnChildClickListener { _, _, groupPosition, childPosition, _ ->
-                when (childPosition) {
-                    0 -> recyclerView.adapter = RedukeAdapter(allPosts(posts), this)
-                    1 -> recyclerView.adapter = RedukeAdapter(filterBySubreddit(posts, listData[(titleList as ArrayList<String>)[groupPosition]]!![childPosition]), this)
-                    2 -> recyclerView.adapter = RedukeAdapter(filterBySubreddit(posts, listData[(titleList as ArrayList<String>)[groupPosition]]!![childPosition]), this)
-                    3 -> recyclerView.adapter = RedukeAdapter(filterBySubreddit(posts, listData[(titleList as ArrayList<String>)[groupPosition]]!![childPosition]), this)
-                    4 -> recyclerView.adapter = RedukeAdapter(filterBySubreddit(posts, listData[(titleList as ArrayList<String>)[groupPosition]]!![childPosition]), this)
-                    5 -> recyclerView.adapter = RedukeAdapter(filterBySubreddit(posts, listData[(titleList as ArrayList<String>)[groupPosition]]!![childPosition]), this)
-                    6 -> recyclerView.adapter = RedukeAdapter(filterBySubreddit(posts, listData[(titleList as ArrayList<String>)[groupPosition]]!![childPosition]), this)
-                    7 -> recyclerView.adapter = RedukeAdapter(filterBySubreddit(posts, listData[(titleList as ArrayList<String>)[groupPosition]]!![childPosition]), this)
-                    8 -> recyclerView.adapter = RedukeAdapter(filterBySubreddit(posts, listData[(titleList as ArrayList<String>)[groupPosition]]!![childPosition]), this)
-                    9 -> recyclerView.adapter = RedukeAdapter(filterBySubreddit(posts, listData[(titleList as ArrayList<String>)[groupPosition]]!![childPosition]), this)
-                    10 -> recyclerView.adapter = RedukeAdapter(filterBySubreddit(posts, listData[(titleList as ArrayList<String>)[groupPosition]]!![childPosition]), this)
-                    else -> { // Note the block
-                        toast("Invalid Subreddit Selection")
-                    }
-                }
-                mDrawerLayout.closeDrawers()
-                false
-            }
-        }
 
         val mypreference = BlogIOSharedPreferences(this)
 
@@ -270,8 +229,8 @@ class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
             // Create a popup where the user can select how they want their feed items to be sorted.
             org.cedzlabs.blogit.R.id.item_sort_feed ->
                 selector(
-                        "Sort Feed By",
-                        sortOptions
+                    "Sort Feed By",
+                    sortOptions
                 ) { _, i ->
                     when {
                         // Call the relevant functions when the relevant item is pressed.
@@ -288,8 +247,8 @@ class FeedActivity : AppCompatActivity(), RedukeListener, AnkoLogger {
         when (item?.itemId) {
             org.cedzlabs.blogit.R.id.item_add_post ->
                 selector(
-                        "What Type Of Post Do You Want To Create?",
-                        postTypes
+                    "What Type Of Post Do You Want To Create?",
+                    postTypes
                 ) { _, i ->
 
                     val sel = postTypes[i]

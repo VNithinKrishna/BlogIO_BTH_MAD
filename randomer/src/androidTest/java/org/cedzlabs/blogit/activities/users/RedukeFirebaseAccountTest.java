@@ -2,10 +2,10 @@ package org.cedzlabs.blogit.activities.users;
 
 import android.app.Activity;
 import android.app.Instrumentation;
-import android.support.test.espresso.Espresso;
-import android.support.test.espresso.IdlingRegistry;
-import android.support.test.espresso.action.ViewActions;
-import android.support.test.rule.ActivityTestRule;
+import androidx.test.espresso.Espresso;
+import androidx.test.espresso.IdlingRegistry;
+import androidx.test.espresso.action.ViewActions;
+import androidx.test.rule.ActivityTestRule;
 import android.util.Log;
 import android.view.View;
 
@@ -21,10 +21,10 @@ import java.security.SecureRandom;
 
 import kotlin.jvm.JvmField;
 
-import static android.support.test.InstrumentationRegistry.getInstrumentation;
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static junit.framework.TestCase.assertNotNull;
 
 public class RedukeFirebaseAccountTest {

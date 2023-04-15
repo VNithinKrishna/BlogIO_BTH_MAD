@@ -18,8 +18,6 @@ import java.time.format.DateTimeFormatter
 
 class TextPostActivity : AppCompatActivity(), AnkoLogger {
 
-    val subreddits = listOf("Android", "Education", "Fashion", "Funny", "Ireland", "Music", "News", "Photography", "Technology", "Video")
-
     var post = PostModel()
     lateinit var app: MainApp
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,8 +46,6 @@ class TextPostActivity : AppCompatActivity(), AnkoLogger {
             // Fill the fields with existing data.
             textPostTitleField.setText(post.title)
             textPostDescriptionField.setText(post.text)
-//            textPostSubredditSpinner.setSelection(subreddits.indexOf(post.subreddit))
-//            textPostSubredditSpinner.isEnabled = false
 
             deleteTextPostBtn.visibility = VISIBLE
 
@@ -70,9 +66,6 @@ class TextPostActivity : AppCompatActivity(), AnkoLogger {
                     .ofPattern("dd-MM-yyyy HH:mm:ss.SSSSSS")
                     .withZone(ZoneOffset.UTC)
                     .format(Instant.now())
-            // Get the value from the subreddit spinner.
-            //val subredditSpinner = findViewById<Spinner>(org.cedzlabs.blogit.R.id.textPostSubredditSpinner)
-            //post.subreddit = subredditSpinner.selectedItem.toString()
 
             // Get an instance of the BlogIOSharedPreferences.
             val redukeSharedPref = BlogIOSharedPreferences(this)

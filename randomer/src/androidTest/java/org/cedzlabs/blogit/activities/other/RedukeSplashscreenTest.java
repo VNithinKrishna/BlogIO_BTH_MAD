@@ -17,10 +17,10 @@ public class RedukeSplashscreenTest {
     // Creating rule for the RedukeSplashscreen.
     @Rule
     @JvmField
-    public ActivityTestRule<RedukeSplashscreen> mActivityTestRule = new ActivityTestRule<>(RedukeSplashscreen.class);
+    public ActivityTestRule<BlogIOSplashscreen> mActivityTestRule = new ActivityTestRule<>(BlogIOSplashscreen.class);
 
     // Init the RedukeSplashscreen activity.
-    private RedukeSplashscreen sActivity = null;
+    private BlogIOSplashscreen sActivity = null;
 
     @Before
     public void setUp() {

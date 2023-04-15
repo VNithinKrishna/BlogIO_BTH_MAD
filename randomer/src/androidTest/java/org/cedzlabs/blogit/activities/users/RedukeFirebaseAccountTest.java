@@ -34,12 +34,11 @@ public class RedukeFirebaseAccountTest {
 
     @Rule
     @JvmField
-    // Creating rule for the RedukeLoginActivity.
-    public ActivityTestRule<RedukeLoginActivity> mActivityTestRule = new ActivityTestRule<>(RedukeLoginActivity.class);
-    private RedukeLoginActivity lActivity = null;
+    public ActivityTestRule<BlogIOLoginActivity> mActivityTestRule = new ActivityTestRule<>(BlogIOLoginActivity.class);
+    private BlogIOLoginActivity lActivity = null;
     // Creating all the ActivityMonitors we need for the test below.
-    private Instrumentation.ActivityMonitor registerActivityMonitor = getInstrumentation().addMonitor(RedukeRegisterActivity.class.getName(), null, false);
-    private Instrumentation.ActivityMonitor loginActivityMonitor = getInstrumentation().addMonitor(RedukeLoginActivity.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor registerActivityMonitor = getInstrumentation().addMonitor(BlogIORegisterActivity.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor loginActivityMonitor = getInstrumentation().addMonitor(BlogIOLoginActivity.class.getName(), null, false);
     private Instrumentation.ActivityMonitor feedActivityMonitor = getInstrumentation().addMonitor(FeedActivity.class.getName(), null, false);
 
     @Before
